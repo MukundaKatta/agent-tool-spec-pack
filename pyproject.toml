@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-tool-spec-pack"
+version = "0.1.0"
+description = "Convert Python function sigs + docstrings into Anthropic/OpenAI/Gemini/Bedrock tool-call schemas. Multi-style docstring parsing, Optional/Literal/Enum/dataclass support. Zero deps."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mukunda Rao Katta", email = "mukunda.vjcs6@gmail.com" }]
+keywords = [
+  "llm",
+  "ai",
+  "tool",
+  "spec",
+  "schema",
+  "function-calling",
+  "agents",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/MukundaKatta/agent-tool-spec-pack"
+Issues = "https://github.com/MukundaKatta/agent-tool-spec-pack/issues"
+Source = "https://github.com/MukundaKatta/agent-tool-spec-pack"
+"Sibling - agentvet" = "https://pypi.org/project/agentvet/"
+"Sibling - llm-tool-arg-coerce" = "https://pypi.org/project/llm-tool-arg-coerce/"
+"Sibling - agent-tool-graph" = "https://pypi.org/project/agent-tool-graph/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_tool_spec_pack"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/tests", "/README.md", "/LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
